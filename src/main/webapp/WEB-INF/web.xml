@@ -27,18 +27,15 @@
 		<param-name>password</param-name>
 		<param-value>123456</param-value>
 	</context-param>
-	<context-param>
-		<param-name>dbPost</param-name>
-		<param-value>3306</param-value>
+		<context-param>
+		<param-name>database</param-name>
+		<param-value>db_shopthoitrang</param-value>
 	</context-param>
 	<context-param>
 		<param-name>dbDriver</param-name>
 		<param-value>com.mysql.jdbc.Driver</param-value>
 	</context-param>
-	<context-param>
-		<param-name>database</param-name>
-		<param-value>qlsv</param-value>
-	</context-param>
+
 
 	
 </web-app>

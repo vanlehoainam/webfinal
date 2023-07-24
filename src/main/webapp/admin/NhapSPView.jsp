@@ -25,49 +25,44 @@
 	out.print(msg); } %>
 	<div class="container">
 		<h2>Form Nhập Thông Tin Sản Phẩm</h2>
-		<form id="adminform" action="AdminController.jsp" method="POST">
+		<form id="adminform" action="SanPhamController.jsp" method="POST">
 
 			<div class="form-group">
-				<label for="tensp">Tên Sản Phẩm:</label> <input type="text"
-					class="form-control" id="tensp" name="tensp"
+				<label for="Ten_QA">Tên Sản Phẩm:</label> <input type="text"
+					class="form-control" id="Ten_QA" name="Ten_QA"
 					placeholder="Nhập Tên Sản Phẩm " onblur="validateTenSp()"> <span
-					id="tenspError" class="text-danger"></span>
+					id="Ten_QAError" class="text-danger"></span>
 				<div class="form-group">
-					<label for="size">Size:</label> <input type="text"
-						class="form-control" id="size" name="size"
+					<label for="Size">Size:</label> <input type="text"
+						class="form-control" id="Size" name="Size"
 						placeholder="Nhập Size" onblur="validateSize()"> <span
-						id="sizeError" class="text-danger"></span>
+						id="SizeError" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label for="giaban">Giá Bán :</label> <input type="text"
-						class="form-control" id="giaban" name="giaban"
+					<label for="GiaBan">Giá Bán :</label> <input type="text"
+						class="form-control" id="GiaBan" name="GiaBan"
 						placeholder="Nhập Giá Bán" onblur="validateGiaBan()"> <span
-						id="giabanError" class="text-danger"></span>
+						id="GiaBanError" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label for="soluong">Số Lượng:</label> <input type="text"
-						class="form-control" id="soluong" name="soluong"
+					<label for="SoLuong">Số Lượng:</label> <input type="text"
+						class="form-control" id="SoLuong" name="SoLuong"
 						placeholder="Nhập  Số Lượng" onblur="validateSoLuong()"> <span
-						id="soluongError" class="text-danger"></span>
+						id="SoLuongError" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label for="mota">Mô tả :</label> <input type="text"
-						class="form-control" id="mota" name="mota"
+					<label for="MoTa">Mô tả :</label> <input type="text"
+						class="form-control" id="MoTa" name="MoTa"
 						placeholder="Nhập họ tên" onblur="validateMoTa()"> <span
-						id="motaError" class="text-danger"></span>
+						id="MoTaError" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label for="anhsp">Ảnh Sản Phẩm:</label> <input type="text"
-						class="form-control" id="anhsp name="anhsp"
+					<label for="anhSP">Ảnh Sản Phẩm:</label> <input type="text"
+						class="form-control" id="anhSP" name="anhSP"
 						placeholder="Nhập họ tên" onblur="validateAnhSp()"> <span
-						id="anhspError" class="text-danger"></span>
+						id="anhSPError" class="text-danger"></span>
 				</div>
-				<div class="form-group">
-					<label for="is_Alive">is_Alive:</label> <input type="text"
-						class="form-control" id="is_Alive" name="is_Alive"
-						placeholder="Nhập is_Alive" onblur="validateis_Alive()"> <span
-						id="is_AliveError" class="text-danger"></span>
-				</div>
+		
 				<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>

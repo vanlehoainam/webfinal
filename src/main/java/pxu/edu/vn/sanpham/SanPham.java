@@ -3,7 +3,7 @@ package pxu.edu.vn.sanpham;
 public class SanPham {
 	private String Ten_QA;
 	private String Size;
-	private int GiaBan;
+	private float GiaBan;
 	private int SoLuong;
 	private String MoTa;
 	private String anhSP;
@@ -13,7 +13,7 @@ public class SanPham {
 		super();
 	}
 
-	public SanPham(String ten_QA, String size, int giaBan, int soLuong, String moTa, String anhSP, String is_Alive) {
+	public SanPham(String ten_QA, String size, float giaBan, int soLuong, String moTa, String anhSP, String is_Alive) {
 		super();
 		this.Ten_QA = ten_QA;
 		this.Size = size;
@@ -23,6 +23,7 @@ public class SanPham {
 		this.anhSP = anhSP;
 		this.Is_Alive = is_Alive;
 	}
+
 
 	public String getTen_QA() {
 		return Ten_QA;
@@ -40,11 +41,11 @@ public class SanPham {
 		Size = size;
 	}
 
-	public int getGiaBan() {
+	public float getGiaBan() {
 		return GiaBan;
 	}
 
-	public void setGiaBan(int giaBan) {
+	public void setGiaBan(float giaBan) {
 		GiaBan = giaBan;
 	}
 

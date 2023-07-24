@@ -19,23 +19,22 @@
 	
 	
 	//Lay du lieu tu form
+	
 	String Ten_QA = (String) request.getParameter("Ten_QA");
 	String Size = (String) request.getParameter("Size");
-	//int GiaBan = Integer.parseInt(request.getParameter("GiaBan"));
-	//int SoLuong = Integer.parseInt(request.getParameter("SoLuong"));
+	Float GiaBan = Float.parseFloat(request.getParameter("GiaBan"))	;
+	int SoLuong = Integer.parseInt(request.getParameter("SoLuong"));	
 	String MoTa = (String) request.getParameter("MoTa");
 	String anhSP = (String) request.getParameter("anhSP");
-	String Is_Alive = (String) request.getParameter("Is_Alive");
-	//out.println(hoten + "; " + ngaysinh.toString() + "; " + gioitinh + "; " + sdt);
+	//out.println(Ten_QA + "; " + Size + "; " + GiaBan + "; " + SoLuong+ "; " + MoTa+ "; " + anhSP);
 	//Goi StudentModel de luu doi tuong sv vao CSDL
 	SanPham sp = new SanPham();
 	sp.setTen_QA(Ten_QA);
 	sp.setSize(Size);
-	//sp.setGiaBan(GiaBan);
-	//sp.setSoLuong(SoLuong);
+	sp.setGiaBan(GiaBan);
+	sp.setSoLuong(SoLuong);
 	sp.setMoTa(MoTa);
 	sp.setAnhSP(anhSP);
-	sp.setIs_Alive(Is_Alive);
 	
 	// lấy kết nối csdl 
 	if (DBConnection.getDbConnection()==null){
@@ -48,20 +47,18 @@
 		String password = application.getInitParameter("password");
 		String dbDriver = application.getInitParameter("dbDriver");
 		DBConnection conn = new DBConnection  (dbServer,dbAddress,database,username,password,dbDriver);
-		
+		//out.println(dbServer + "; " +dbAddress + "; " + dbPort + "; " +database+ "; " + username+ "; " + password);
 		}
-	else {
-		//chi can su dung 
-	}
+
 	SanPhamModel myModel = new SanPhamModel();
-	boolean kq = myModel.addStudent(sp,DBConnection.dbConnection);
+	boolean kq = myModel.addSanPham(sp,DBConnection.dbConnection);
 	if (kq) {
 		request.setAttribute("message", "THÊM SẢN PHẨM THÀNH CÔNG");
 	} else {
 		request.setAttribute("message", "THÊM SẢN PHẨM THẤT BẠI");
 	}
 	RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
-	if (dispatcher != null) {
+if (dispatcher != null) {
 		dispatcher.forward(request, response);
 	}
 		

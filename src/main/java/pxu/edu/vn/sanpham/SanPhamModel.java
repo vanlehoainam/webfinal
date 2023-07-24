@@ -10,7 +10,7 @@ public class SanPhamModel {
 public SanPhamModel () {
 	
 }
-public boolean addStudent(SanPham input , Connection dbConnection) {
+public boolean addSanPham(SanPham input , Connection dbConnection) {
 	boolean flag = true;
 	try {
 
@@ -19,7 +19,7 @@ public boolean addStudent(SanPham input , Connection dbConnection) {
 		PreparedStatement statement = dbConnection.prepareStatement(sql);
 		statement.setString(1, input.getTen_QA());
 		statement.setString(2, input.getSize());
-		statement.setInt(3, input.getGiaBan());
+		statement.setFloat(3, input.getGiaBan());
 		statement.setInt(4, input.getSoLuong());
 		statement.setString(5, input.getMoTa());
 		statement.setString(6, input.getAnhSP());
