@@ -10,7 +10,7 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../css/login.css">
 <body>
-	 <%@ include file="../template/header.html" %>
+	 <%@ include file="../template/header.jsp" %>
 	<%
 	String msg = (String) request.getAttribute("message");
 	if (msg != null) {
@@ -23,6 +23,6 @@
 		Password: <input type="password" name="password"><br> <input
 			type="submit" value="LOGIN">
 	</form>
-	<%@ include file="../template/footer.html" %>
+	<%@ include file="../template/footer.jsp" %>
 </body>
 </html>

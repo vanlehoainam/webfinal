@@ -13,16 +13,16 @@ public class DBConnection {
 	}
 
 	public DBConnection(String dbServer, String dbAddress, String dbPort, String database, String username,
-			String password) {
+			String password, String dbDriver) {
+		String dbURL = "jdbc:" + dbServer + "://" + dbAddress + ":" + dbPort + "/" + database;
 
-		String dbURL = "jdbc: Mysql:// " + dbAddress + ":" + dbPort + "/" + database + "/" + dbServer;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(dbDriver);
 			if (dbConnection == null) {
 				dbConnection = DriverManager.getConnection(dbURL, username, password);
-				System.out.println("connect successfully!");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
 			dbConnection = null;
 		}
 	}
@@ -30,4 +30,5 @@ public class DBConnection {
 	public static Connection getDbConnection() {
 		return dbConnection;
 	}
+
 }

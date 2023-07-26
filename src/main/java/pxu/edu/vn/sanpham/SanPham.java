@@ -1,29 +1,38 @@
 package pxu.edu.vn.sanpham;
 
 public class SanPham {
+	private int ID_QA;
 	private String Ten_QA;
 	private String Size;
-	private float GiaBan;
+	private Double GiaBan;
 	private int SoLuong;
 	private String MoTa;
 	private String anhSP;
-	private String Is_Alive;
+
 
 	public SanPham() {
 		super();
 	}
 
-	public SanPham(String ten_QA, String size, float giaBan, int soLuong, String moTa, String anhSP, String is_Alive) {
+	public SanPham(int ID_QA,String ten_QA, String size, Double giaBan, int soLuong, String moTa, String anhSP, String is_Alive) {
 		super();
+		this.ID_QA = ID_QA;
 		this.Ten_QA = ten_QA;
 		this.Size = size;
 		this.GiaBan = giaBan;
 		this.SoLuong = soLuong;
 		this.MoTa = moTa;
 		this.anhSP = anhSP;
-		this.Is_Alive = is_Alive;
+
 	}
 
+	public int getID_QA() {
+		return ID_QA;
+	}
+
+	public void setID_QA(int iD_QA) {
+		ID_QA = iD_QA;
+	}
 
 	public String getTen_QA() {
 		return Ten_QA;
@@ -41,11 +50,11 @@ public class SanPham {
 		Size = size;
 	}
 
-	public float getGiaBan() {
+	public Double getGiaBan() {
 		return GiaBan;
 	}
 
-	public void setGiaBan(float giaBan) {
+	public void setGiaBan(Double giaBan) {
 		GiaBan = giaBan;
 	}
 
@@ -73,18 +82,13 @@ public class SanPham {
 		this.anhSP = anhSP;
 	}
 
-	public String getIs_Alive() {
-		return Is_Alive;
-	}
-
-	public void setIs_Alive(String is_Alive) {
-		Is_Alive = is_Alive;
-	}
-
 	@Override
 	public String toString() {
-		return "SanPham [Ten_QA=" + Ten_QA + ", Size=" + Size +  ", GiaBan=" + GiaBan
-				+ ", SoLuong=" + SoLuong + ", MoTa=" + MoTa + ", anhSP=" + anhSP + ", Is_Alive=" + Is_Alive + "]";
+		return "SanPham [ID_QA=" + ID_QA + ", Ten_QA=" + Ten_QA + ", Size=" + Size + ", GiaBan=" + GiaBan + ", SoLuong="
+				+ SoLuong + ", MoTa=" + MoTa + ", anhSP=" + anhSP + "]";
 	}
+
+
+	
 
 }

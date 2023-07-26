@@ -11,7 +11,7 @@
 	String user = (String)session.getAttribute("user");
 	if(user != null){
 		%>
-			<a href="../admin/AdminView.jsp">Nhập Sản Phẩm </a>
+			<a href="../admin/NhapSPView.jsp">Nhập Sản Phẩm</a>
 		<%
 	}else{
 		request.setAttribute("message", "CHUA DANG NHAP");
