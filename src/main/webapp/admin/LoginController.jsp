@@ -12,7 +12,7 @@
 	String p = (String)request.getParameter("password");
 	if(u.equals("admin") && p.equals("1234")){
 		session.setAttribute("user", u);
-		response.sendRedirect("../login/admin.jsp");
+		response.sendRedirect("../admin/AdminView.jsp");
 	}else{
 		request.setAttribute("message", "SAI USERNAME va MAT KHAU");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");

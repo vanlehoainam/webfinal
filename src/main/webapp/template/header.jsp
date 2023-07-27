@@ -45,19 +45,19 @@
 				<div id="my-nav" class="collapse navbar-collapse">
 					<ul class="navbar-nav mr-auto header-menu">
 						<li class="nav-item active">
-							<a class="nav-link" href="index.html">TRANG CHỦ <span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="index.html">HOME <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#" tabindex="-1" aria-disabled="false">DESIGN</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">VÁY</a>
+							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">SHIRT</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">ÁO</a>
+							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">JACKET</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">QUẦN</a>
+							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">TROUSERS</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">ABOUT</a>

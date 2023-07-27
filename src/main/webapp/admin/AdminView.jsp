@@ -1,4 +1,4 @@
-<%@page import="pxu.edu.vn.sanpham.SanPham"%>
+<%@page import="pxu.edu.vn.sanpham.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
@@ -18,6 +18,7 @@
 	integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 	crossorigin="anonymous"></script>
 <body>
+	<%@ include file="../template/header.jsp"%>
 	<%
 	String user = (String) session.getAttribute("user");
 	if (user == null) {
@@ -35,7 +36,7 @@
 	%>
 	<div style="padding: 22px 32px;">
 		<div class="text">
-			<h1>
+			<h1 style="padding-top: 50px">
 				<center>THÔNG TIN SẢN PHẨM</center>
 			</h1>
 			</br>
@@ -44,17 +45,16 @@
 
 			<div class="panel-body">
 				<table id="productTable"
-					class="table table-responsive table-bordered" cellpadding="0"
-					width="100%">
+					class="table table-responsive table-bordered" cellpadding="0">
 					<table border="1">
 						<tr>
 							<th>ID</th>
 							<th>Tên Sản Phẩm</th>
-							<th>Giá Bán	</th>
-							<th> Số Lượng </th>
-							<th> Mô Tả </th>
-							<th> Cập Nhật  </th>
-							<th> Xoá </th>
+							<th>Giá Bán</th>
+							<th>Số Lượng</th>
+							<th>Mô Tả</th>
+							<th>Cập Nhật</th>
+							<th>Xoá</th>
 						</tr>
 						<%
 						// Mở kết nối tới cơ sở dữ liệu
@@ -79,14 +79,21 @@
 						%>
 
 						<tr>
-							<td><%=id%></td>
+							<td><%=id%> <input type="hidden" name="idsp" value="<%=id%>"></td>
 							<td><%=name%></td>
 							<td><%=giaban%></td>
 							<td><%=soluong%></td>
 							<td><%=mota%></td>
-							<td><a href="edit.jsp?id=<%=id%>">Sửa</a> </td>
-							<td>| <a
-								href="delete.jsp?id=<%=id%>">Xoá</a></td>
+							<td><button class="edit-btn" data-bs-toggle="modal"
+									data-bs-target="#editModal${sp.ID_QA}" data-ID_QA="${sp.ID_QA}"
+									data-Ten_QA="${sp.Ten_QA}" data-Size="${sp.Size}"
+									data-GiaBan="${sp.GiaBan}" data-SoLuong="${sp.SoLuong}"
+									data-MoTa="${sp.MoTa}">Cập nhật</button></td>
+							<td>
+								<button>
+									<a href="delete.jsp?idsp=<%=id%>">Xoá</a>
+								</button>
+							</td>
 						</tr>
 						<%
 						}
@@ -105,87 +112,109 @@
 						}
 						%>
 					</table>
-			</div>
-			<!-- Add Product Modal -->
-			<form id="studentForm" action="SanPhamController.jsp" method="POST">
-				<div class="modal fade" id="addModal" tabindex="-1"
-					aria-labelledby="addModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="addModalLabel">Thêm Sản Phẩm</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<form action="addsp" method="POST">
-									<div class="mb-3">
-										<label for="tensp" class="form-label">Tên Quần Áo</label> <input
-											type="text" class="form-control" id="tensp" name="tensp">
+					</div>
+					<!-- Add Product Modal -->
+					<form id="sanphamform" action="SanPhamController.jsp" method="POST">
+						<div class="modal fade" id="addModal" tabindex="-1"
+							aria-labelledby="addModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="addModalLabel">Thêm Sản Phẩm</h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
-									<div class="mb-3">
-										<label for="size" class="form-label">Size</label> <input
-											type="text" class="form-control" id="size" name="size">
+									<div class="modal-body">
+										<form action="addsp" method="POST">
+											<div class="mb-3">
+												<label for="tensp" class="form-label">Tên Quần Áo</label> <input
+													type="text" class="form-control" id="tensp" name="tensp">
+											</div>
+											<div class="mb-3">
+												<label for="size" class="form-label">Size</label> <input
+													type="text" class="form-control" id="size" name="size">
+											</div>
+											<div class="mb-3">
+												<label for="giaban" class="form-label">Giá Bán</label> <input
+													type="text" class="form-control" id="giaban" name="giaban">
+											</div>
+											<div class="mb-3">
+												<label for="soluong class="form-label">Số Lượng</label> <input
+													type="text" class="form-control" id="soluong"
+													name="soluong">
+											</div>
+											<div class="mb-3">
+												<label for="mota" class="form-label">Mô Tả</label>
+												<textarea class="form-control" id="mota" name="mota"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Đóng</button>
+												<button type="submit" class="btn btn-primary">Thêm
+													sản phẩm</button>
+											</div>
+										</form>
 									</div>
-									<div class="mb-3">
-										<label for="giaban" class="form-label">Giá Bán</label> <input
-											type="text" class="form-control" id="giaban" name="giaban">
-									</div>
-									<div class="mb-3">
-										<label for="soluong class="form-label">Số Lượng</label> <input
-											type="text" class="form-control" id="soluong" name="soluong">
-									</div>
-									<div class="mb-3">
-										<label for="mota" class="form-label">Mô Tả</label>
-										<textarea class="form-control" id="mota" name="mota"></textarea>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Đóng</button>
-										<button type="submit" class="btn btn-primary">Thêm
-											sản phẩm</button>
-									</div>
-								</form>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</form>
-			<!-- Modal -->
-			<c:forEach var="sp" items="${quanaoListt}">
-				<div class="modal fade" id="editModal${sp.ID_QA}" tabindex="-1"
-					aria-labelledby="editModalLabel${sp.iD_QA}" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="editModalLabel${sp.iD_QA}">
-									Chỉnh Sửa Thông Tin Sản Phẩm</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<form action="uppdatesp" method="POST">
-									<input type="hidden" name="iD_QAStr" value="${sp.iD_QA}">
-									<div class="mb-3">
-										<label for="ten_nhasx_${sp.iD_QA}" class="form-label">Tên
-											quần áo</label> <input type="text" class="form-control"
-											id="ten_nhasx_${sp.iD_QA}" name="ten_nhasx_${sp.iD_QA}"
-											value="${sp.ten_QA}">
+					</form>
+					<!-- Modal -->
+					<c:forEach var="nsx" items="${SanPhamList}">
+						<div class="modal fade" id="editModal${sp.ID_QA}" tabindex="-1"
+							aria-labelledby="editModalLabel${sp.ID_QA}" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="editModalLabel${sp.ID_QA}">
+											Chỉnh sửa thông tin sản phẩm</h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
-
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-bs-dismiss="modal">Đóng</button>
-										<button type="submit" class="btn btn-primary">Lưu</button>
+									<div class="modal-body">
+										<form action="EditController" method="POST">
+											<input type="hidden" name="ID_QA" value="${sp.ID_QA}">
+											<div class="mb-3">
+												<label for="Ten_QA${sp.ID_QA}" class="form-label">Tên
+													Sản Phẩm</label> <input type="text" class="form-control"
+													id="Ten_QA${sp.ID_QA}" name="Ten_QA${sp.ID_QA}"
+													value="${sp.Ten_QA}">
+											</div>
+											<div class="mb-3">
+												<label for="Size${sp.ID_QA}" class="form-label">Size</label> <input type="text" class="form-control"
+													id="Size${sp.ID_QA}" name="Size${sp.ID_QA}"
+													value="${sp.Size}">
+											</div>
+											<div class="mb-3">
+												<label for="GiaBan${sp.ID_QA}" class="form-label">Giá bán</label> <input type="text" class="form-control"
+													id="GiaBan${sp.ID_QA}" name="GiaBan${sp.ID_QA}"
+													value="${sp.GiaBan}">
+											</div>
+											<div class="mb-3">
+												<label for="SoLuong${sp.ID_QA}" class="form-label">Số lượng</label> <input type="text" class="form-control"
+													id="SoLuong${sp.ID_QA}" name="SoLuong${sp.ID_QA}"
+													value="${sp.SoLuong}">
+											</div>
+											<div class="mb-3">
+												<label for="MoTa${sp.ID_QA}" class="form-label">Mô tả</label> <input type="text" class="form-control"
+													id="MoTa${sp.ID_QA}" name="MoTa${sp.ID_QA}"
+													value="${sp.MoTa}">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Đóng</button>
+												<button type="submit" class="btn btn-primary">Lưu</button>
+											</div>
+										</form>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
+					</c:forEach>
 					</div>
-				</div>
-			</c:forEach>
-		</div>
-		<style>
+					</div>
+					<%@ include file="../template/footer.jsp"%>
+					<style>
 th {
 	border-top: 1px solid #ccc;
 	border-left: 1px solid #ccc;
@@ -215,18 +244,19 @@ td {
 	border-right: none;
 }
 </style>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-	<script>
+					</div>
+					<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+					<script
+						src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+					<script>
 		$(document).ready(function() {
 			$('#productTable').DataTable();
 		});
 	</script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-		crossorigin="anonymous"></script>
+					<script
+						src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+						integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+						crossorigin="anonymous"></script>
 </body>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

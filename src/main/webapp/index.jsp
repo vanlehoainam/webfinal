@@ -7,6 +7,6 @@
 <title>Home page </title>
 </head>
 <body>
-<h1> welcome</h1>
+<%@include file="admin/AdminView.jsp" %>
 </body>
 </html>

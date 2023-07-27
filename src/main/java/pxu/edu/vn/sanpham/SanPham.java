@@ -9,21 +9,19 @@ public class SanPham {
 	private String MoTa;
 	private String anhSP;
 
-
 	public SanPham() {
 		super();
 	}
 
-	public SanPham(int ID_QA,String ten_QA, String size, Double giaBan, int soLuong, String moTa, String anhSP, String is_Alive) {
+	public SanPham(int iD_QA, String ten_QA, String size, Double giaBan, int soLuong, String moTa, String anhSP) {
 		super();
-		this.ID_QA = ID_QA;
-		this.Ten_QA = ten_QA;
-		this.Size = size;
-		this.GiaBan = giaBan;
-		this.SoLuong = soLuong;
-		this.MoTa = moTa;
+		ID_QA = iD_QA;
+		Ten_QA = ten_QA;
+		Size = size;
+		GiaBan = giaBan;
+		SoLuong = soLuong;
+		MoTa = moTa;
 		this.anhSP = anhSP;
-
 	}
 
 	public int getID_QA() {
@@ -87,8 +85,5 @@ public class SanPham {
 		return "SanPham [ID_QA=" + ID_QA + ", Ten_QA=" + Ten_QA + ", Size=" + Size + ", GiaBan=" + GiaBan + ", SoLuong="
 				+ SoLuong + ", MoTa=" + MoTa + ", anhSP=" + anhSP + "]";
 	}
-
-
-	
 
 }
